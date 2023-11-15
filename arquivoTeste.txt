@@ -1,15 +1,17 @@
 """
-    Descrição do Projeto:
+    Descrição do Modulo:
 Esse projeto foi feito para gerar um dicionario a partir de um arquivo
     
 """
 """
-Modulo: Gera_Dicionario
+Nome: Gera_Dicionario
 """
 
 import regex as re
 import pandas as pd
 import numpy
+from entidades.dicionario.Gera_Dicionario import *
+from entidades.Gerador.gerador import *
 
 __all__ = ["geraDicionario"]
 
@@ -33,9 +35,3 @@ def buscaDescricaoDoProjeto(conteudo, dicionario):
         dicionario['descrição'] = match
         return match
 
-"""
-Modulo: Documentacao
-
-"""
-import pandas
-import sexo

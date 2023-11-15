@@ -1,5 +1,7 @@
-import entidades.Gerador.gerador as ge
+
+from entidades.Gerador.gerador import *
+
 caminho = "arquivoTeste.txt"
 
-dicionario = ge.pegaDicionario(caminho)
+dicionario = pegaDicionario(caminho)
 print(dicionario)
