@@ -1,7 +1,6 @@
 
 from entidades.Gerador.gerador import *
 
-caminho = "arquivoTeste.txt"
+caminho = "/home/tomas/PUC/Modular/modulos"
 
-dicionario = pegaDicionario(caminho)
-print(dicionario)
+generator(caminho)

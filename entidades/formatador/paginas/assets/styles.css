@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    margin-bottom: 5px;
+}
+
+footer {
+    font-size: 0.8em;
+    text-align: center;
+}
+
+section {
+    background-color: #f8f8f8; /* Cor de fundo clara */
+    border: 1px solid #d3d3d3; /* Borda cinza */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 20px; /* Preenchimento interno */
+    margin: 20px 0; /* Margens externas */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil */
+    max-width: 800px; /* Largura máxima */
+    margin-left: auto; /* Centraliza horizontalmente */
+    margin-right: auto;
+}
+
+section p {
+    font-size: 1.1em; /* Tamanho da fonte */
+    line-height: 1.6; /* Espaçamento entre linhas */
+    color: #333; /* Cor do texto */
+    text-align: justify; /* Alinhamento do texto */
+}
+

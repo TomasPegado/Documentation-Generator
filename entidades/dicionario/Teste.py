@@ -7,7 +7,7 @@ class TestExtrairDescricaoProjeto(unittest.TestCase):
     def test_01_busca_descricao_ok_condicao_retorno(self):
         print("Caso de Teste 01 - Buscar descrição com sucesso")
 
-        with open("/home/tomas/PUC/Modular/arquivoTeste.txt", 'r') as arquivo:
+        with open("entidades/dicionario/Gera_Dicionario.py", 'r') as arquivo:
             conteudo = arquivo.read()
 
         dicionario = gd.geraDicionario(conteudo)
@@ -19,7 +19,7 @@ class TestExtrairDescricaoProjeto(unittest.TestCase):
     def test_02_busca_nome_ok_condicao_retorno(self):
         print("Caso de Teste 02 - Buscar nome com sucesso")
 
-        with open("/home/tomas/PUC/Modular/arquivoTeste.txt", 'r') as arquivo:
+        with open("entidades/dicionario/Gera_Dicionario.py", 'r') as arquivo:
             conteudo = arquivo.read()
 
         dicionario = {'nome': ''}
@@ -33,7 +33,7 @@ class TestExtraiImports(unittest.TestCase):
     def test_03_busca_imports_ok_condicao_retorno(self):
         print("Caso de Teste 03 - Buscar Imports com sucesso")
 
-        with open("/home/tomas/PUC/Modular/arquivoTeste.txt", 'r') as arquivo:
+        with open("entidades/dicionario/Gera_Dicionario.py", 'r') as arquivo:
             conteudo = arquivo.read()
 
         dicionario = dict()
@@ -41,7 +41,7 @@ class TestExtraiImports(unittest.TestCase):
 
         retorno_esperado = dicionario['imports']
 
-        self.assertEqual(retorno_esperado, ['regex as re', 'pandas as pd', 'numpy', 'entidades.dicionario.Gera_Dicionario', 'entidades.Gerador.gerador'])
+        self.assertEqual(retorno_esperado, ['regex as re'])
 
 class TestExtraiFuncoes(unittest.TestCase):
 
@@ -49,7 +49,7 @@ class TestExtraiFuncoes(unittest.TestCase):
 
         print("Caso de Teste 04 - Buscar Funções com sucesso")
 
-        with open("/home/tomas/PUC/Modular/arquivoTeste.txt", 'r') as arquivo:
+        with open("entidades/dicionario/Gera_Dicionario.py", 'r') as arquivo:
             conteudo = arquivo.read()
 
         dicionario = {'funcoes': {}}
@@ -57,17 +57,18 @@ class TestExtraiFuncoes(unittest.TestCase):
 
         retorno_esperado = list(dicionario['funcoes'].keys())
 
-        self.assertEqual(retorno_esperado, ['geraDicionario', 'buscaDescricaoDoModulo'])
+        self.assertEqual(retorno_esperado, ['geraDicionario', 'buscaDescricaoDoModulo', 'buscaNome','buscaImports','buscaDescricaoFuncao','buscaFuncoes','buscaAll'])
     
     def test_05_busca_descricoes_funcoes_ok_condicao_retorno(self):
 
         print("Caso de Teste 05 - Buscar Descrição das Funções com sucesso")
 
-        with open("/home/tomas/PUC/Modular/arquivoTeste.txt", 'r') as arquivo:
+        with open("entidades/dicionario/arquivoTeste.txt", 'r') as arquivo:
             conteudo = arquivo.read()
         
         funcoes = ['geraDicionario', 'buscaDescricaoDoModulo']
-        dicionario = {'funcoes': {'geraDicionario': {'descricao': ''}, 'buscaDescricaoDoModulo': {'descricao': ''}}}
+        dicionario = {'funcoes': {'geraDicionario': {'descricao': ''},
+                                   'buscaDescricaoDoModulo': {'descricao': ''}}}
         for func in funcoes:
 
             gd.buscaDescricaoFuncao(conteudo, dicionario, func)
@@ -82,7 +83,7 @@ class TestExtraiFuncoes(unittest.TestCase):
 
         print("Caso de Teste 06 - Buscar Descrição das Funções usando o buscaFuncoes")
 
-        with open("/home/tomas/PUC/Modular/arquivoTeste.txt", 'r') as arquivo:
+        with open("entidades/dicionario/arquivoTeste.txt", 'r') as arquivo:
             conteudo = arquivo.read()
 
         dicionario = {'funcoes': {}}
@@ -101,7 +102,7 @@ class TestExtraiFuncoesDisponibilizadas(unittest.TestCase):
 
         print("Caso de Teste 07 - Buscar Descrição das Funções com sucesso")
 
-        with open("/home/tomas/PUC/Modular/arquivoTeste.txt", 'r') as arquivo:
+        with open("entidades/dicionario/Gera_Dicionario.py", 'r') as arquivo:
             conteudo = arquivo.read()
         
         dicionario = {'_all_': []}
@@ -109,7 +110,7 @@ class TestExtraiFuncoesDisponibilizadas(unittest.TestCase):
 
         retorno_esperado = dicionario['_all_']
 
-        self.assertEqual(retorno_esperado, ["geraDicionario", "buscaDescricaoDoModulo"])
+        self.assertEqual(retorno_esperado, ["geraDicionario"])
 
 if __name__ == '__main__':
     unittest.main()
