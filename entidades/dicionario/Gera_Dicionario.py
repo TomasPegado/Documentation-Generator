@@ -8,11 +8,12 @@ Nome: Gera_Dicionario
 """
 
 import regex as re
+import entidades.Lista_Generica.Lista_Generica
 
 __all__ = ["geraDicionario"]
 
 def geraDicionario(conteudo: str):
-    """Descrição: Aqui esta a descrição da função geraDicionario
+    """Aqui esta a descrição da função geraDicionario
 
     Parameters
     ----------
@@ -41,7 +42,7 @@ def geraDicionario(conteudo: str):
     return dicionario
 
 def buscaDescricaoDoModulo(conteudo: str, dicionario: dict):
-    """Descrição: Aqui esta a descrição da função geraDicionario
+    """Aqui esta a descrição da função geraDicionario
 
     Parameters
     ----------
@@ -149,9 +150,9 @@ def buscaDescricaoFuncao(conteudo: str, dicionario: dict, funcao: str):
             dicionario['funcoes'][funcao]['descricao'] = descricao
 
         else:
-            print('Nenhuma descrição para a funcao: %s', funcao)
+            print('Nenhuma descrição para a funcao: ', funcao)
     else:
-        print("Não encontrou match para a funcao: %s", funcao)
+        print("Não encontrou match para a funcao: ", funcao)
     return
 
 def buscaFuncoes(conteudo: str, dicionario: dict):

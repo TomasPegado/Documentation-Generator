@@ -1,4 +1,5 @@
 
+
 def insereElemento(dicionario, dado, chave, posicao=None):
     if chave not in dicionario:
         dicionario[chave] = []
