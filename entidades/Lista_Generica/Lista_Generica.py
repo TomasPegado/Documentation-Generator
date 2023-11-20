@@ -1,3 +1,21 @@
+def adicionaElementoLista(lista, elemento, posicao=None):
+    if posicao is None:
+        lista.append(elemento)
+    else:
+        lista.insert(posicao, elemento)
+
+def removeElementoLista(lista, elemento=None, posicao=None):
+    if posicao is not None:
+        if posicao < len(lista):
+            lista.pop(posicao)
+    elif elemento is not None:
+        if elemento in lista:
+            lista.remove(elemento)
+    else:
+        raise ValueError("Deve fornecer um elemento ou posição para remover.")
+
+def buscaElementoLista(lista, elemento):
+    return elemento in lista
 
 def insereElemento(dicionario, dado, chave, posicao=None):
     if chave not in dicionario:
