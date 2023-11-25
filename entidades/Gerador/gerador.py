@@ -20,9 +20,11 @@ def pegaArquivos(caminho_pasta: str):
 def generator(caminho_pasta: str):
 
     arquivos = pegaArquivos(caminho_pasta)
+    dicionario = dict()
 
     for arq in arquivos:
         if arq[-3:] == ".py":
-            dicionario = pegaDicionario(caminho_pasta+'/'+arq)
-            print(dicionario)
+            dicionario[arq[:-3]] = pegaDicionario(caminho_pasta+'/'+arq)
+    
+    return dicionario
 

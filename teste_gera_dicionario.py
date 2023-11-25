@@ -1,5 +1,5 @@
 import unittest
-import Gera_Dicionario as gd
+import entidades.dicionario.Gera_Dicionario as gd
 
 
 class TestExtrairDescricaoProjeto(unittest.TestCase):
@@ -41,7 +41,7 @@ class TestExtraiImports(unittest.TestCase):
 
         retorno_esperado = dicionario['imports']
 
-        self.assertEqual(retorno_esperado, ['regex as re'])
+        self.assertEqual(retorno_esperado, ['regex as re', 'entidades.Lista_Generica.Lista_Generica'])
 
 class TestExtraiFuncoes(unittest.TestCase):
 
@@ -63,7 +63,7 @@ class TestExtraiFuncoes(unittest.TestCase):
 
         print("Caso de Teste 05 - Buscar Descrição das Funções com sucesso")
 
-        with open("entidades/dicionario/arquivoTeste.txt", 'r') as arquivo:
+        with open("/home/tomas/PUC/Modular/ArquivosTestes/arquivoTeste.txt", 'r') as arquivo:
             conteudo = arquivo.read()
         
         funcoes = ['geraDicionario', 'buscaDescricaoDoModulo']
@@ -83,7 +83,7 @@ class TestExtraiFuncoes(unittest.TestCase):
 
         print("Caso de Teste 06 - Buscar Descrição das Funções usando o buscaFuncoes")
 
-        with open("entidades/dicionario/arquivoTeste.txt", 'r') as arquivo:
+        with open("/home/tomas/PUC/Modular/ArquivosTestes/arquivoTeste.txt", 'r') as arquivo:
             conteudo = arquivo.read()
 
         dicionario = {'funcoes': {}}
