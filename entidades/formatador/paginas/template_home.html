@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ nome_projeto }}</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <h1>{{ nome_projeto }}</h1>
+    <section>
+        <h2>Descrição do Projeto</h2>
+        <p>{{ descricao_projeto }}</p>
+    </section>
+
+    {% if integrantes_projeto %}
+    <section>
+        <h2>Integrantes do Projeto</h2>
+        <ul>
+            {% for integrante in integrantes_projeto %}
+            <li>{{ integrante }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
+    <nav>
+        <h2>Índice da Documentação</h2>
+        <div class="container"> <!-- Container para controlar a largura e centralização -->
+            <ul>
+                {% for modulo in modulos_projeto %}
+                <li><a href="{{ modulo.url }}">{{ modulo.nome }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+    
+
+    <footer>
+        <p>Informações do Rodapé</p>
+    </footer>
+</body>
+</html>

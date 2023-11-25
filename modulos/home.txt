@@ -1,0 +1,12 @@
+Nome do Projeto: Gerador de Documentação
+
+Descrição: Nosso projeto tem o propósito de gerar uma documentação automática de um projeto feito em Python.
+Com isso, ele gera páginas html que abrem no navegador contendo a documentação de cada módulo.
+
+Nossa aplicação recebe o caminho da pasta que contém os módulos do projeto a ser documentado e,
+a partir de padrões, captura as informações dos módulos para, em seguida, formata-las numa página html.
+
+Após as capturas de informações e as formatações das páginas, a aplicação abre elas no navegador do usuário,
+inicializando um local Host.
+
+Integrantes: Tomás Lenzi, Gabriel Emile

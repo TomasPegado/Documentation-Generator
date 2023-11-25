@@ -1,8 +1,6 @@
 
 from entidades.Gerador.gerador import *
 
-caminho = "/home/tomas/PUC/Modular/modulos"
+caminho = input("Insira o caminho do arquivo contendo os modulos: ")
 
 dados = generator(caminho)
-
-print(dados)
