@@ -1,6 +1,10 @@
 import os
 from entidades.dicionario.Gera_Dicionario import *
 from entidades.formatador.formata_html import *
+import http.server
+import socketserver
+import threading
+import os
 
 __all__ = ["generator"]
 
@@ -18,6 +22,27 @@ def pegaArquivos(caminho_pasta: str):
     lista = os.listdir(caminho_pasta)
     return lista
 
+def iniciaLocalServer(caminho_pasta: str): 
+
+    print("diretorio atual", os.getcwd())
+    os.chdir(caminho_pasta)
+
+    PORT = 8000
+    Handler = http.server.SimpleHTTPRequestHandler
+    print("diretorio atual", os.getcwd())
+
+    def start_server():
+        with socketserver.TCPServer(("", PORT), Handler) as httpd:
+            httpd.allow_reuse_address = True
+            print(f"Servidor iniciado em http://localhost:{PORT}/home.html")
+            print("Abra esta URL no navegador de sua escolha.")
+            httpd.serve_forever()
+
+    # Iniciar o servidor em uma thread separada
+    thread = threading.Thread(target=start_server)
+    thread.daemon = True
+    thread.start()
+
 def generator(caminho_pasta: str):
 
     arquivos = pegaArquivos(caminho_pasta)
@@ -31,5 +56,6 @@ def generator(caminho_pasta: str):
     
     formataHTML(dicionario, caminho_pasta)
     
-    return dicionario
+    print("Iniciar Local Host")
+    iniciaLocalServer(caminho_pasta)
 

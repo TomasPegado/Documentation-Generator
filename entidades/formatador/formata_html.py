@@ -6,25 +6,25 @@ __all__ = ['formataHTML']
 
 def formataHTML(dados: dict, caminho: str):
 
-    indice = criaIndice(dados, caminho)
+    indice = criaIndice(dados)
 
     for arq in dados.keys():
         if arq == "home":
             formataHomePage(dados["home"], caminho, indice)
         else:
-            formataModulePage(dados[arq], caminho, arq)
+            formataModulePage(dados[arq], caminho, indice)
 
     criaAssetsCSS(caminho)        
     return
 
-def criaIndice(dados: dict, caminho: str):
+def criaIndice(dados: dict):
     
     lista_paginas = []
     for arq in dados.keys():
 
         dicionario = dict()
         dicionario['nome'] = arq
-        dicionario['url'] = f'{caminho}/{arq}.html'
+        dicionario['url'] = f'http://localhost:8000/{arq}.html'
 
         lista_paginas.append(dicionario)
 
