@@ -12,7 +12,7 @@ import entidades.Lista_Generica.Lista_Generica
 
 __all__ = ["geraDicionario"]
 
-def geraDicionario(conteudo: str):
+def geraDicionario(conteudo: str, type: str):
     """Aqui esta a descrição da função geraDicionario
 
     Parameters
@@ -25,19 +25,27 @@ def geraDicionario(conteudo: str):
     _type_
         _description_
     """
-    
-    dicionario = {
-        'descrição': '', 
-        'nome': '', 
-        'imports': [],
-        'funcoes': {},
-        '_all_': []
-    }
-    buscaDescricaoDoModulo(conteudo, dicionario)
-    buscaNome(conteudo, dicionario) 
-    buscaImports(conteudo, dicionario)
-    buscaFuncoes(conteudo, dicionario)
-    buscaAll(conteudo, dicionario)
+    if type == "modulo":
+
+        dicionario = {
+            'descrição': '', 
+            'nome': '', 
+            'imports': [],
+            'funcoes': {},
+            '_all_': []
+        }
+        buscaDescricaoDoModulo(conteudo, dicionario)
+        buscaNome(conteudo, dicionario) 
+        buscaImports(conteudo, dicionario)
+        buscaFuncoes(conteudo, dicionario)
+        buscaAll(conteudo, dicionario)
+
+    elif type == "home":
+
+        dicionario = dict()
+        buscaNomeProjetoHome(conteudo, dicionario)
+        buscaDescriçãoProjetoHome(conteudo, dicionario)
+        buscaIntegrantesHome(conteudo, dicionario)
 
     return dicionario
 
@@ -200,4 +208,64 @@ def buscaAll(conteudo: str, dicionario: dict):
     
     else:
         return "Nenhuma restrição de funções disponibilizadas"  
+
+def buscaNomeProjetoHome(conteudo: str, dicionario: dict):
+    """_summary_
+
+    Parameters
+    ----------
+    conteudo : str
+        _description_
+    dicionario : dict
+        _description_
+    """
+    # Padrão Regex
+    padrao = r'Nome do Projeto:\s*(.*)'
+
+    # Buscar pelo padrão no conteúdo
+    match = re.search(padrao, conteudo)
+
+    if match:
+        nome_projeto = match.group(1)  # Captura o nome do projeto
+        dicionario["nome_projeto"] = nome_projeto
+    else:
+        print("Nome do Projeto não encontrado.")
+
+def buscaDescriçãoProjetoHome(conteudo: str, dicionario: dict):
+    """_summary_
+
+    Returns
+    -------
+    _type_
+        _description_
+    """    
+
+    # Definir o padrão de regex
+    padrao = r'Descrição:(.*?)Integrantes'
+
+    # Buscar pela descrição do modulo
+    match = re.search(padrao, conteudo, re.DOTALL)
+
+    if match:
+        match = match.group(1).strip()  # Retorna o texto capturado, removendo espaços extras
+        dicionario['descrição_projeto'] = match
+        return match
+    else:
+        return "Descrição do modulo não encontrada."
+
+def buscaIntegrantesHome(conteudo: str, dicionario: dict):
+
+    # Padrão Regex
+    padrao = r'Integrantes:\s*(.*)'
+
+    # Buscar pelo padrão no conteúdo
+    match = re.search(padrao, conteudo)
+
+    if match:
+        integrantes = match.group(1)  # Captura a lista de integrantes
+        
+        lista_integrantes = integrantes.split(', ') # Dividir a string em uma lista, usando vírgula como separador
+        dicionario["integrantes_projeto"] = lista_integrantes 
+    else:
+        print("Integrantes não encontrados.")
 

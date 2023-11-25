@@ -3,23 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nome do Projeto</title>
+    <title>{{ nome_projeto }}</title>
     <link rel="stylesheet" href="assets/styles.css">
-
 </head>
 <body>
-    <h1>Nome do Projeto</h1>
+    <h1>{{ nome_projeto }}</h1>
     <section>
-        <p>Descrição do seu projeto...</p>
+        <p>{{ descricao_projeto }}</p>
     </section>
+
+    {% if integrantes_projeto %}
+    <section>
+        <h2>Integrantes do Projeto</h2>
+        <ul>
+            {% for integrante in integrantes_projeto %}
+            <li>{{ integrante }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
     <nav>
         <h2>Índice da Documentação</h2>
         <ul>
-            <li><a href="modulo1.html">Página 1</a></li>
-            <li><a href="modulo2.html">Página 2</a></li>
-            <!-- Adicione mais links conforme necessário -->
+            {% for modulo in modulos_projeto %}
+            <li><a href="{{ modulo.url }}">{{ modulo.nome }}</a></li>
+            {% endfor %}
         </ul>
     </nav>
+
     <footer>
         <p>Informações do Rodapé</p>
     </footer>
