@@ -1,0 +1,70 @@
+"""
+    Descrição do Modulo:
+Esse projeto foi feito para gerar um dicionario a partir de um arquivo
+    
+"""
+"""
+Nome: Gera_Dicionario
+"""
+
+import regex as re
+import pandas as pd
+import numpy
+from entidades.dicionario.Gera_Dicionario import *
+from entidades.Gerador.gerador import *
+
+__all__ = ["geraDicionario", "buscaDescricaoDoModulo"]
+
+def geraDicionario(conteudo):
+    """Descrição: Aqui esta a descrição da função geraDicionario
+
+    Parameters
+    ----------
+    conteudo : _type_
+        string
+
+    Returns
+    -------
+    _type_
+        _description_
+    """
+    
+    dicionario = {
+        'descrição': '', 
+        'nome': '', 
+        'imports': [],
+        'funcoes': {}}
+    buscaDescricaoDoModulo(conteudo, dicionario)
+    buscaNome(conteudo, dicionario) 
+    buscaImports(conteudo, dicionario)
+    buscaFuncoes(conteudo, dicionario)
+
+    return dicionario
+
+def buscaDescricaoDoModulo(conteudo, dicionario):
+    """Descrição: Aqui esta a descrição da função buscaDescricaoDoModulo
+
+    Parameters
+    ----------
+    conteudo : _type_
+        string
+
+    Returns
+    -------
+    _type_
+        _description_
+    """
+
+    # Definir o padrão de regex
+    padrao = r'Descrição do Modulo:(.*?)"""'
+
+    # Buscar pela descrição do modulo
+    match = re.search(padrao, conteudo, re.DOTALL)
+
+    if match:
+        match = match.group(1).strip()  # Retorna o texto capturado, removendo espaços extras
+        dicionario['descrição'] = match
+        return match
+    else:
+        return "Descrição do modulo não encontrada."
+
