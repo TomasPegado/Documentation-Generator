@@ -9,6 +9,7 @@
 <body>
     <h1>{{ nome_projeto }}</h1>
     <section>
+        <h2>Descrição do Projeto</h2>
         <p>{{ descricao_projeto }}</p>
     </section>
 
@@ -25,12 +26,15 @@
 
     <nav>
         <h2>Índice da Documentação</h2>
-        <ul>
-            {% for modulo in modulos_projeto %}
-            <li><a href="{{ modulo.url }}">{{ modulo.nome }}</a></li>
-            {% endfor %}
-        </ul>
+        <div class="container"> <!-- Container para controlar a largura e centralização -->
+            <ul>
+                {% for modulo in modulos_projeto %}
+                <li><a href="{{ modulo.url }}">{{ modulo.nome }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
     </nav>
+    
 
     <footer>
         <p>Informações do Rodapé</p>

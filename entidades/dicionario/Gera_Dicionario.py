@@ -248,7 +248,7 @@ def buscaDescriçãoProjetoHome(conteudo: str, dicionario: dict):
 
     if match:
         match = match.group(1).strip()  # Retorna o texto capturado, removendo espaços extras
-        dicionario['descrição_projeto'] = match
+        dicionario['descricao_projeto'] = match
         return match
     else:
         return "Descrição do modulo não encontrada."
