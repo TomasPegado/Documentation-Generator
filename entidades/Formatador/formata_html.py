@@ -6,6 +6,8 @@ __all__ = ['formataHTML']
 
 def formataHTML(dados: dict, caminho: str):
 
+    criaStatic(caminho)
+
     indice = criaIndice(dados)
 
     for arq in dados.keys():
@@ -16,6 +18,16 @@ def formataHTML(dados: dict, caminho: str):
 
     criaAssetsCSS(caminho)        
     return
+
+def criaStatic(caminho: str):
+
+    # Verificar se o diretório já existe
+    if not os.path.exists(f'{caminho}/static'):
+        # Criar o diretório
+        os.makedirs(f'{caminho}/static')
+        print(f"Diretório '{f'{caminho}/static'}' foi criado com sucesso.")
+    else:
+        print("O diretório static já existe.")
 
 def criaIndice(dados: dict):
     
@@ -33,10 +45,10 @@ def criaIndice(dados: dict):
 def criaAssetsCSS(caminho: str):
 
     # Caminho para o novo diretório
-    pasta_assets = f'{caminho}/assets'
+    pasta_assets = f'{caminho}/static/assets'
 
     # Caminho do arquivo CSS original
-    arquivo_css_original = "entidades/formatador/paginas/assets/styles.css"
+    arquivo_css_original = "entidades/Formatador/paginas/assets/styles.css"
 
     # Caminho completo do arquivo no diretório de destino
     arquivo_css_destino = os.path.join(pasta_assets, os.path.basename(arquivo_css_original))
@@ -64,14 +76,14 @@ def formataHomePage(dados: dict, caminho: str, indice: list):
     dados["modulos_projeto"] = indice
 
     # Carregar o template
-    with open('entidades/formatador/paginas/template_home.html', 'r') as file:
+    with open('entidades/Formatador/paginas/template_home.html', 'r') as file:
         template = Template(file.read())
 
     # Renderizar o template com os dados
     html = template.render(dados)
 
     # Salvar o HTML gerado
-    with open(f'{caminho}/home.html', 'w') as file:
+    with open(f'{caminho}/static/home.html', 'w') as file:
         file.write(html)  
 
 def formataModulePage(dados: dict, caminho: str, indice: list):
