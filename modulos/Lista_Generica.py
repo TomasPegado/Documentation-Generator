@@ -1,4 +1,11 @@
-
+"""
+Descrição do Modulo:
+Esse módulo foi feito para ter funções que manipulam listas.
+    
+"""
+"""
+Nome: Lista_Generica
+"""
 
 def insereElemento(dicionario, dado, chave, posicao=None):
     if chave not in dicionario:

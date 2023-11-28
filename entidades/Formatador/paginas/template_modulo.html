@@ -3,42 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nome do Módulo</title>
+    <title>{{ nome }}</title>
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-    <h1>Nome do Módulo</h1>
+    <h1>{{ nome }}</h1>
     <section>
-        <p>Descrição do módulo...</p>
+        <p>{{ descrição }}</p>
     </section>
     <section>
         <h2>Imports</h2>
         <ul>
-            <li>import exemplo1</li>
-            <li>import exemplo2</li>
-            <!-- Outros imports -->
+            {% for import in imports %}
+            <li>{{ import }}</li>
+            {% endfor %}
         </ul>
     </section>
     <section>
         <h2>__all__</h2>
         <ul>
-            <li>função1</li>
-            <li>função2</li>
-            <!-- Funções em __all__ -->
+            {% for funcao in _all_ %}
+            <li>{{ funcao }}</li>
+            {% endfor %}
         </ul>
     </section>
     <section>
         <h2>Funções do Módulo</h2>
+        {% for nome, descrição in funcoes.items() %}
         <article>
-            <h3>Nome da Função 1</h3>
-            <p>Descrição da Função 1...</p>
+            <h3>{{ nome }}</h3>
+            <p>{{ descrição }}</p>
         </article>
-        <article>
-            <h3>Nome da Função 2</h3>
-            <p>Descrição da Função 2...</p>
-        </article>
-        <!-- Outras funções -->
+        {% endfor %}
     </section>
+
+    <!-- Seção do Índice -->
+    <nav>
+        <h2>Índice de Módulos</h2>
+        <ul>
+            {% for modulo in modulos_projeto %}
+            <li><a href="{{ url }}">{{ nome }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+
     <footer>
         <p>Informações do Rodapé</p>
     </footer>
