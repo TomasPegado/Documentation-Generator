@@ -36,7 +36,7 @@ def criaIndice(dados: dict):
 
         dicionario = dict()
         dicionario['nome'] = arq
-        dicionario['url'] = f'http://localhost:8000/{arq}.html'
+        dicionario['url'] = f'http://localhost:8000/static/{arq}.html'
 
         lista_paginas.append(dicionario)
 
@@ -86,9 +86,23 @@ def formataHomePage(dados: dict, caminho: str, indice: list):
     with open(f'{caminho}/static/home.html', 'w', encoding="utf-8") as file:
         file.write(html)  
 
+from jinja2 import Template
+
 def formataModulePage(dados: dict, caminho: str, indice: list):
 
-    pass
+    dados["modulos_projeto"] = indice
+
+    # Carregar o template para a página do módulo
+    with open('entidades/Formatador/paginas/template_modulo.html', 'r', encoding='utf-8') as file:
+        template = Template(file.read())
+
+    # Renderizar o template com os dados do módulo
+    html = template.render(dados)
+
+    # Salvar o HTML gerado para o módulo específico
+    with open(f'{caminho}/static/{dados["nome"]}.html', 'w', encoding="utf-8") as file:
+        file.write(html)
+
 
 
 
