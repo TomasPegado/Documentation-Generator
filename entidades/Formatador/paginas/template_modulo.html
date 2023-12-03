@@ -32,7 +32,7 @@
         {% for nome, descrição in funcoes.items() %}
         <article>
             <h3>{{ nome }}</h3>
-            <p>{{ descrição }}</p>
+            <p>{{ descrição | safe }}</p>
         </article>
         {% endfor %}
     </section>
@@ -42,10 +42,11 @@
         <h2>Índice de Módulos</h2>
         <ul>
             {% for modulo in modulos_projeto %}
-            <li><a href="{{ url }}">{{ nome }}</a></li>
+            <li><a href="{{ modulo.url }}">{{ modulo.nome }}</a></li>
             {% endfor %}
         </ul>
     </nav>
+
 
     <footer>
         <p>Informações do Rodapé</p>
