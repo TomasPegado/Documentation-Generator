@@ -8,8 +8,9 @@
 </head>
 <body>
     <h1>{{ nome }}</h1>
+    <!-- Aplicação do filtro 'safe' na descrição do módulo -->
     <section>
-        <p>{{ descrição }}</p>
+        <p>{{ descrição | safe }}</p>
     </section>
     <section>
         <h2>Imports</h2>
@@ -29,10 +30,11 @@
     </section>
     <section>
         <h2>Funções do Módulo</h2>
-        {% for nome, descrição in funcoes.items() %}
+        {% for nome, funcao in funcoes.items() %}
         <article>
             <h3>{{ nome }}</h3>
-            <p>{{ descrição | safe }}</p>
+            <!-- Confirmando que o filtro 'safe' está sendo aplicado na descrição da função -->
+            <p>{{ funcao.descricao | safe }}</p>
         </article>
         {% endfor %}
     </section>
@@ -46,7 +48,6 @@
             {% endfor %}
         </ul>
     </nav>
-
 
     <footer>
         <p>Informações do Rodapé</p>

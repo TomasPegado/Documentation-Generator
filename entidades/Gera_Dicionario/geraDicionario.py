@@ -130,6 +130,11 @@ def buscaImports(conteudo: str, dicionario: dict):
         dicionario['imports'] += matches2
     return 
         
+def limpa_descricao(descricao: str) -> str:
+    descricao = descricao.replace('\\n', '\n').replace('\\t', '\t')
+    print(descricao)
+    return descricao    
+
 def buscaDescricaoFuncao(conteudo: str, dicionario: dict, funcao: str):
     
     """_summary_
@@ -150,6 +155,7 @@ def buscaDescricaoFuncao(conteudo: str, dicionario: dict, funcao: str):
     match = re.search(padrao, conteudo, re.DOTALL)
     if match:
         descricao = match.group(1).strip()
+        descricao = limpa_descricao(descricao)
         # Se os placeholders não forem necessários, remova-os
         descricao = descricao.replace('_description_', '').replace('_type_', '').strip()
         # Certifique-se de que a chave 'funcoes' exista e de que a função esteja nela
