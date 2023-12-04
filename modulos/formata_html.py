@@ -1,5 +1,5 @@
 """
-Descrição do Módulo:
+Descrição do Modulo:
 Esse módulo foi feito para criar e formatar os arquivos html da documentação
 usando o dicionario que contem os dados dos módulos
     
@@ -12,7 +12,7 @@ from jinja2 import Template
 import shutil
 import os
 
-__all__ = ['formataHTML']
+__all__ = ["formataHTML"]
 
 def formataHTML(dados: dict, caminho: str):
     """
