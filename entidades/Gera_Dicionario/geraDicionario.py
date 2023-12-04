@@ -9,7 +9,6 @@ Nome: Gera_Dicionario
 """
 
 import regex as re
-import entidades.Lista_Generica.Lista_Generica
 
 __all__ = ["geraDicionario"]
 
