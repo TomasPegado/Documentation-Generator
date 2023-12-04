@@ -129,8 +129,9 @@ def buscaImports(conteudo: str, dicionario: dict):
     if matches2:
         dicionario['imports'] += matches2
     return 
-
+        
 def buscaDescricaoFuncao(conteudo: str, dicionario: dict, funcao: str):
+    
     """_summary_
 
     Parameters
@@ -141,27 +142,25 @@ def buscaDescricaoFuncao(conteudo: str, dicionario: dict, funcao: str):
         _description_
     funcao : str
         _description_
-    """    
+    """  
+    
+    # Definir o padrão de regex para encontrar o começo da docstring da função
+    padrao = rf"def\s+{re.escape(funcao)}\s*\(.*?\):\s*\"\"\"(.*?)\"\"\""
 
-    # Definir o padrão de regex
-    padrao1 = rf"def\s+{re.escape(funcao)}\s*\(.*?\):\s*((.|\n)*)" #Padrao para achar a funcao
-    # padrao2 = r'Descrição:(.*?)Parameters'
-    padrao2 = r'"""(.*?)"""'
-
-    # Encontrar a correpondencia para a funcao
-    match = re.search(padrao1, conteudo)
+    match = re.search(padrao, conteudo, re.DOTALL)
     if match:
-        conteudoDaFuncao = match.group(1)  # Obtém o texto capturado após a declaração da função
-        match2 = re.search(padrao2, conteudoDaFuncao, re.DOTALL)
-        if match2:
-            descricao = match2.group(1).strip()  # Remove espaços em branco extras
-            dicionario['funcoes'][funcao]['descricao'] = descricao
-
-        else:
-            print('Nenhuma descrição para a funcao: ', funcao)
+        descricao = match.group(1).strip()
+        # Se os placeholders não forem necessários, remova-os
+        descricao = descricao.replace('_description_', '').replace('_type_', '').strip()
+        # Certifique-se de que a chave 'funcoes' exista e de que a função esteja nela
+        if 'funcoes' not in dicionario:
+            dicionario['funcoes'] = {}
+        if funcao not in dicionario['funcoes']:
+            dicionario['funcoes'][funcao] = {}
+        dicionario['funcoes'][funcao]['descricao'] = descricao
     else:
-        print("Não encontrou match para a funcao: ", funcao)
-    return
+        print(f'Nenhuma descrição para a função: {funcao}')
+
 
 def buscaFuncoes(conteudo: str, dicionario: dict):
     """_summary_
