@@ -8,10 +8,6 @@ Nome: Gera_Dicionario
 """
 
 import regex as re
-import pandas as pd
-import numpy
-from entidades.dicionario.Gera_Dicionario import *
-from entidades.Gerador.gerador import *
 
 __all__ = ["geraDicionario", "buscaDescricaoDoModulo"]
 
