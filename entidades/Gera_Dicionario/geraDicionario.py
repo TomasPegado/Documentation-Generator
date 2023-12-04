@@ -1,6 +1,7 @@
 """
 Descrição do Modulo:
-Esse projeto foi feito para gerar um dicionario a partir de um arquivo
+Esse projeto foi feito para gerar um dicionario com as informações 
+dos módulos
     
 """
 """
@@ -13,17 +14,13 @@ import entidades.Lista_Generica.Lista_Generica
 __all__ = ["geraDicionario"]
 
 def geraDicionario(conteudo: str, type: str):
-    """Aqui esta a descrição da função geraDicionario
-
-    Parameters
-    ----------
-    conteudo : _type_
-        _description_
-
-    Returns
-    -------
-    _type_
-        _description_
+    """
+    Principal função do módulo. Ela recebe o conteudo do módulo e gera o dicionario.
+    Utiliza as outras funções desse módulo para fazer a leitura e extração dos dados.
+    
+    Parâmetros:
+    - conteudo: Conteudo do módulo
+    - type: Se é o conteúdo de um módulo ou da página home
     """
     if type == "modulo":
 
@@ -50,20 +47,13 @@ def geraDicionario(conteudo: str, type: str):
     return dicionario
 
 def buscaDescricaoDoModulo(conteudo: str, dicionario: dict):
-    """Aqui esta a descrição da função geraDicionario
-
-    Parameters
-    ----------
-    conteudo : str
-        _description_
-    dicionario : dict
-        _description_
-
-    Returns
-    -------
-    _type_
-        _description_
-    """      
+    """
+    Função que busca a descrição do módulo
+    
+    Parâmetros:
+    - conteudo: Conteudo do módulo
+    - dicionario: Dicionario para inserir os dados extraidos
+    """
 
     # Definir o padrão de regex
     padrao = r'Descrição do Modulo:(.*?)"""'
@@ -79,20 +69,14 @@ def buscaDescricaoDoModulo(conteudo: str, dicionario: dict):
         return "Descrição do modulo não encontrada."
 
 def buscaNome(conteudo: str, dicionario: dict):
-    """_summary_
-
-    Parameters
-    ----------
-    conteudo : str
-        _description_
-    dicionario : dict
-        _description_
-
-    Returns
-    -------
-    _type_
-        _description_
-    """    
+    """
+    Função que busca o nome do módulo
+    
+    Parâmetros:
+    - conteudo: Conteudo do módulo
+    - dicionario: Dicionario para inserir os dados extraidos
+    """
+    
     # Definir o padrão de regex
     padrao = r'Nome:(.*?)"""'
 
@@ -107,15 +91,13 @@ def buscaNome(conteudo: str, dicionario: dict):
         return "Nome do modulo não encontrada."
 
 def buscaImports(conteudo: str, dicionario: dict):
-    """_summary_
-
-    Parameters
-    ----------
-    conteudo : str
-        _description_
-    dicionario : dict
-        _description_
-    """    
+    """
+    Função que busca Imports do modulo
+    
+    Parâmetros:
+    - conteudo: Conteudo do módulo
+    - dicionario: Dicionario para inserir os dados extraidos
+    """ 
 
     # Definir o padrão de regex
     padrao1 = r'^import\s+([^\n]+)'
@@ -131,17 +113,13 @@ def buscaImports(conteudo: str, dicionario: dict):
     return 
         
 def buscaDescricaoFuncao(conteudo: str, dicionario: dict, funcao: str):
+    """
+    Função que busca a descrição da funcao
     
-    """_summary_
-
-    Parameters
-    ----------
-    conteudo : str
-        _description_
-    dicionario : dict
-        _description_
-    funcao : str
-        _description_
+    Parâmetros:
+    - conteudo: Conteudo do módulo
+    - dicionario: Dicionario para inserir os dados extraidos
+    - funcao: nome da função
     """  
     
     # Definir o padrão de regex para encontrar o começo da docstring da função
@@ -163,15 +141,14 @@ def buscaDescricaoFuncao(conteudo: str, dicionario: dict, funcao: str):
 
 
 def buscaFuncoes(conteudo: str, dicionario: dict):
-    """_summary_
-
-    Parameters
-    ----------
-    conteudo : str
-        _description_
-    dicionario : dict
-        _description_
-    """    
+    """
+    Função que busca as funções criadas no módulo
+    
+    Parâmetros:
+    - conteudo: Conteudo do módulo
+    - dicionario: Dicionario para inserir os dados extraidos
+    - funcao: nome da função
+    """  
 
     # Definir o padrão de regex
     padrao = r'def\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\('
@@ -186,14 +163,12 @@ def buscaFuncoes(conteudo: str, dicionario: dict):
     return
 
 def buscaAll(conteudo: str, dicionario: dict):
-    """_summary_
-
-    Parameters
-    ----------
-    conteudo : str
-        _description_
-    dicionario : dict
-        _description_
+    """
+    Função que busca as funções contidas no __all__
+    
+    Parâmetros:
+    - conteudo: Conteudo do módulo
+    - dicionario: Dicionario para inserir os dados extraidos
     """
 
     #definir o padrão regex
@@ -209,14 +184,12 @@ def buscaAll(conteudo: str, dicionario: dict):
         return "Nenhuma restrição de funções disponibilizadas"  
 
 def buscaNomeProjetoHome(conteudo: str, dicionario: dict):
-    """_summary_
-
-    Parameters
-    ----------
-    conteudo : str
-        _description_
-    dicionario : dict
-        _description_
+    """
+    Função que busca o nome do Projeto no home.txt
+    
+    Parâmetros:
+    - conteudo: Conteudo do módulo
+    - dicionario: Dicionario para inserir os dados extraidos
     """
     # Padrão Regex
     padrao = r'Nome do Projeto:\s*(.*)'
@@ -231,13 +204,13 @@ def buscaNomeProjetoHome(conteudo: str, dicionario: dict):
         print("Nome do Projeto não encontrado.")
 
 def buscaDescriçãoProjetoHome(conteudo: str, dicionario: dict):
-    """_summary_
-
-    Returns
-    -------
-    _type_
-        _description_
-    """    
+    """
+    Função que busca a descrição do Projeto no home.txt
+    
+    Parâmetros:
+    - conteudo: Conteudo do módulo
+    - dicionario: Dicionario para inserir os dados extraidos
+    """   
 
     # Definir o padrão de regex
     padrao = r'Descrição:(.*?)Integrantes'
@@ -253,6 +226,13 @@ def buscaDescriçãoProjetoHome(conteudo: str, dicionario: dict):
         return "Descrição do modulo não encontrada."
 
 def buscaIntegrantesHome(conteudo: str, dicionario: dict):
+    """
+    Função que busca o nome dos integrantes na home.txt
+    
+    Parâmetros:
+    - conteudo: Conteudo do módulo
+    - dicionario: Dicionario para inserir os dados extraidos
+    """
 
     # Padrão Regex
     padrao = r'Integrantes:\s*(.*)'

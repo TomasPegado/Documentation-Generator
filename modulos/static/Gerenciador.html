@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <h1>Gerenciador</h1>
+    <section>
+        <h2>Descrição</h2>
+        <p>Modulo que gerencia a trnaformação dos dados recebidos nas páginas em html.
+Ele usa as funções disponibilizadas pelos modulos de Gera Dicionario e 
+Formata HTML e disponibiliza para a main (app.py) a função generator.</p>
+    </section>
+    <section>
+        <h2>Imports</h2>
+        <ul>
+            
+            <li>os</li>
+            
+            <li>entidades.Gera_Dicionario.geraDicionario</li>
+            
+            <li>entidades.Formatador.formata_html</li>
+            
+        </ul>
+    </section>
+    <section>
+        <h2>__all__</h2>
+        <ul>
+            
+            <li>generator</li>
+            
+        </ul>
+    </section>
+    <section>
+        <h2>Funções do Módulo</h2>
+        
+        <article>
+            <h3>pegaDicionario</h3>
+            <p>Função que recebe o caminho do arquivo, le o conteudo e passa<br>
+    para a funcao geraDicionario poder gerar o dicionario com os dados<br>
+    extraídos formatados.<br>
+    <br>
+    Parâmetros:<br>
+    - caminho_arquivo (str): Caminho para o arquivo a ser lido<br>
+    - type: Se é um arquivo de modulo ou a pagina home.</p>
+        </article>
+        
+        <article>
+            <h3>pegaArquivos</h3>
+            <p>Função que busca os arquivos do diretório passado no caminho.<br>
+    <br>
+    Parâmetros:<br>
+    - caminho_arquivo (str): Caminho para o diretório</p>
+        </article>
+        
+        <article>
+            <h3>generator</h3>
+            <p>Função principal desse módulo. Vai receber o caminho do diretório<br>
+    gerar o dicionario com os dados do projeto e vai usar a funcao formataHTML<br>
+    para gerar e formatar os arquivos html da documentação.<br>
+    <br>
+    Parâmetros:<br>
+    - caminho_arquivo (str): Caminho para o arquivo a ser lido<br>
+    - type: Se é um arquivo de modulo ou a pagina home.</p>
+        </article>
+        
+    </section>
+
+    <!-- Seção do Índice -->
+    <nav>
+        <h2>Índice de Módulos</h2>
+        <ul>
+            
+            <li><a href="http://localhost:8000/static/Formata_HTML.html">Formata_HTML</a></li>
+            
+            <li><a href="http://localhost:8000/static/Lista_Generica.html">Lista_Generica</a></li>
+            
+            <li><a href="http://localhost:8000/static/Gera_Dicionario.html">Gera_Dicionario</a></li>
+            
+            <li><a href="http://localhost:8000/static/Gerenciador.html">Gerenciador</a></li>
+            
+            <li><a href="http://localhost:8000/static/home.html">home</a></li>
+            
+        </ul>
+    </nav>
+
+
+    <footer>
+        <p>Informações do Rodapé</p>
+    </footer>
+</body>
+</html>
