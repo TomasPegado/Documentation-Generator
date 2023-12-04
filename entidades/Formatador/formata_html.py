@@ -80,7 +80,10 @@ def criaAssetsCSS(caminho: str):
         print(f"Arquivo '{arquivo_css_original}' copiado para '{arquivo_css_destino}'")
     else:
         print("Arquivo CSS original não encontrado.")
-    
+        
+def nl2br(value):
+    """Converts newlines in a string to <br> tags for HTML display."""
+    return value.replace("\n", "<br>\n") if value else ''
 
 def formataHomePage(dados: dict, caminho: str, indice: list):
 
@@ -108,6 +111,9 @@ def formataModulePage(dados: dict, caminho: str, indice: list):
         template = Template(file.read())
         
     print(f"Module page data for {dados['nome']}:", dados)
+    
+    for funcao, detalhes in dados['funcoes'].items():
+        detalhes['descricao'] = detalhes['descricao'].replace('\n\n', '</p><p>').replace('\n', '<br>')
 
     # Renderizar o template com os dados do módulo
     html = template.render(dados)
