@@ -103,7 +103,6 @@ def formataHomePage(dados: dict, caminho: str, indice: list):
         file.write(html)  
 
 def formataModulePage(dados: dict, caminho: str, indice: list):
-
     dados["modulos_projeto"] = indice
 
     # Carregar o template para a página do módulo
@@ -111,9 +110,11 @@ def formataModulePage(dados: dict, caminho: str, indice: list):
         template = Template(file.read())
         
     print(f"Module page data for {dados['nome']}:", dados)
-    
+
+    # Esta parte é para garantir que a descrição seja uma string formatada corretamente para HTML
     for funcao, detalhes in dados['funcoes'].items():
-        detalhes['descricao'] = detalhes['descricao'].replace('\n\n', '</p><p>').replace('\n', '<br>')
+        if isinstance(detalhes, dict) and 'descricao' in detalhes:
+            detalhes['descricao'] = nl2br(detalhes['descricao'])
 
     # Renderizar o template com os dados do módulo
     html = template.render(dados)
@@ -121,6 +122,7 @@ def formataModulePage(dados: dict, caminho: str, indice: list):
     # Salvar o HTML gerado para o módulo específico
     with open(f'{caminho}/static/{dados["nome"]}.html', 'w', encoding="utf-8") as file:
         file.write(html)
+
 
 
 

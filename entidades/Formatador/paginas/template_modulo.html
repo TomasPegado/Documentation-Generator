@@ -29,10 +29,10 @@
     </section>
     <section>
         <h2>Funções do Módulo</h2>
-        {% for nome, descrição in funcoes.items() %}
+        {% for nome, detalhes in funcoes.items() %}
         <article>
             <h3>{{ nome }}</h3>
-            <p>{{ descrição | safe }}</p>
+            <p>{{ detalhes.descricao | safe }}</p>
         </article>
         {% endfor %}
     </section>
