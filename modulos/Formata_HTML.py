@@ -5,7 +5,7 @@ usando o dicionario que contem os dados dos módulos
     
 """
 """
-Nome: formata_html
+Nome: Formata_HTML
 """
 
 from jinja2 import Template

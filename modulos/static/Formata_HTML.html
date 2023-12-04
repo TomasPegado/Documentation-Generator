@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formata_HTML</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <h1>Formata_HTML</h1>
+    <section>
+        <h2>Descrição</h2>
+        <p>Esse módulo foi feito para criar e formatar os arquivos html da documentação
+usando o dicionario que contem os dados dos módulos</p>
+    </section>
+    <section>
+        <h2>Imports</h2>
+        <ul>
+            
+            <li>shutil</li>
+            
+            <li>os</li>
+            
+            <li>jinja2</li>
+            
+        </ul>
+    </section>
+    <section>
+        <h2>__all__</h2>
+        <ul>
+            
+            <li>formataHTML</li>
+            
+        </ul>
+    </section>
+    <section>
+        <h2>Funções do Módulo</h2>
+        
+        <article>
+            <h3>formataHTML</h3>
+            <p>Principal função do módulo. Ela recebe os dados e cria os arquivos.<br>
+    <br>
+    Parâmetros:<br>
+    - dados (dict): O dicionário onde os dados dos modulos estão.<br>
+    - caminho: O caminho do diretório onde os arquivos devem ser criados</p>
+        </article>
+        
+        <article>
+            <h3>criaStatic</h3>
+            <p>Função que verifica se existem no caminho uma pasta static e,<br>
+    se não tiver, cria uma no local. Isso é necessário pois o servidor Flask<br>
+    procura os arquivos html em uma pasta static. Então, usamos essa pasta para<br>
+    alocar os arquivos html do projeto.<br>
+    <br>
+    Parâmetros:<br>
+    - caminho: O caminho do diretório onde os arquivos devem ser criados</p>
+        </article>
+        
+        <article>
+            <h3>criaIndice</h3>
+            <p>Função para criar os links para cada página do programa e, assim, termos indices<br>
+    para navegação entre as páginas.<br>
+    <br>
+    Parâmetros:<br>
+    - dados (dict): O dicionário onde os dados dos modulos estão.</p>
+        </article>
+        
+        <article>
+            <h3>criaAssetsCSS</h3>
+            <p>Função para verificar a existencia e criar uma nova pasta assets, dentro da static<br>
+    para conter o arquivo css de formatação das páginas html.<br>
+    <br>
+    Parâmetros:<br>
+    - caminho: O caminho do diretório onde os arquivos devem ser criados</p>
+        </article>
+        
+        <article>
+            <h3>nl2br</h3>
+            <p>Converts newlines in a string to <br> tags for HTML display.<br>
+    <br>
+    Parâmetros:<br>
+    - value:</p>
+        </article>
+        
+        <article>
+            <h3>formataHomePage</h3>
+            <p>Função que cria e formata a página home da documentação.<br>
+    <br>
+    Parâmetros:<br>
+    - dados (dict): O dicionário onde os dados dos modulos estão.<br>
+    - caminho: O caminho do diretório onde os arquivos devem ser criados<br>
+    - indice: lista dos indices com os links para navegação</p>
+        </article>
+        
+        <article>
+            <h3>formataModulePage</h3>
+            <p>Função que cria e formata as páginas dos módulos da documentação.<br>
+    <br>
+    Parâmetros:<br>
+    - dados (dict): O dicionário onde os dados dos modulos estão.<br>
+    - caminho: O caminho do diretório onde os arquivos devem ser criados<br>
+    - indice: lista dos indices com os links para navegação</p>
+        </article>
+        
+    </section>
+
+    <!-- Seção do Índice -->
+    <nav>
+        <h2>Índice de Módulos</h2>
+        <ul>
+            
+            <li><a href="http://localhost:8000/static/Formata_HTML.html">Formata_HTML</a></li>
+            
+            <li><a href="http://localhost:8000/static/Lista_Generica.html">Lista_Generica</a></li>
+            
+            <li><a href="http://localhost:8000/static/Gera_Dicionario.html">Gera_Dicionario</a></li>
+            
+            <li><a href="http://localhost:8000/static/home.html">home</a></li>
+            
+        </ul>
+    </nav>
+
+
+    <footer>
+        <p>Informações do Rodapé</p>
+    </footer>
+</body>
+</html>
