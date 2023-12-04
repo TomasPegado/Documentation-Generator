@@ -1,34 +1,22 @@
 """
-Descrição do Modulo:
-Esse módulo foi feito para criar e formatar os arquivos html da documentação
-usando o dicionario que contem os dados dos módulos
+Descrição do Módulo:
+Esse módulo foi feito para ter funções que manipulam listas.
     
 """
 """
-Nome: FLista_Generica
+Nome: Lista_Generica
 """
 
-def adicionaElementoLista(lista, elemento, posicao=None):
-    if posicao is None:
-        lista.append(elemento)
-    else:
-        lista.insert(posicao, elemento)
-
-def removeElementoLista(lista, elemento=None, posicao=None):
-    if posicao is not None:
-        if posicao < len(lista):
-            lista.pop(posicao)
-    elif elemento is not None:
-        if elemento in lista:
-            lista.remove(elemento)
-    else:
-        raise ValueError("Deve fornecer um elemento ou posição para remover.")
-
-def buscaElementoLista(lista, elemento):
-    return elemento in lista
-
-
 def insereElemento(dicionario, dado, chave, posicao=None):
+    """
+    Insere um elemento em uma lista dentro do dicionário.
+    
+    Parâmetros:
+    - dicionario (dict): O dicionário onde a lista é mantida.
+    - dado: O elemento a ser inserido na lista.
+    - chave: A chave da lista dentro do dicionário.
+    - posicao (int, opcional): A posição na lista onde o elemento deve ser inserido.
+    """
     if chave not in dicionario:
         dicionario[chave] = []
     if posicao is None:
@@ -37,6 +25,21 @@ def insereElemento(dicionario, dado, chave, posicao=None):
         dicionario[chave].insert(posicao, dado)
 
 def removeElemento(dicionario, dado, chave, posicao=None):
+    """
+    Remove um elemento de uma lista dentro do dicionário.
+
+    Parâmetros
+    ----------
+    dicionario : dict
+        O dicionário de onde a lista será modificada.
+    dado : any
+        O elemento a ser removido da lista.
+    chave : any
+        A chave da lista dentro do dicionário.
+    posicao : int, opcional
+        A posição do elemento a ser removido.
+
+    """
     if chave in dicionario:
         if posicao is None:
             dicionario[chave].remove(dado)
@@ -44,6 +47,26 @@ def removeElemento(dicionario, dado, chave, posicao=None):
             dicionario[chave].pop(posicao)
 
 def buscaElemento(dado, posicao, chave, dicionario):
+    """
+    Procura por um elemento em uma lista dentro do dicionário.
+
+    Parâmetros
+    ----------
+    dado : any
+        O elemento a ser procurado na lista.
+    posicao : int
+        A posição específica na lista para verificar o elemento.
+    chave : any
+        A chave da lista dentro do dicionário.
+    dicionario : dict
+        O dicionário onde a lista é mantida.
+
+    Retorna
+    -------
+    bool
+        Verdadeiro se o elemento for encontrado, Falso caso contrário.
+
+    """
     if chave in dicionario:
         if posicao is None:
             return dado in dicionario[chave]
@@ -52,6 +75,22 @@ def buscaElemento(dado, posicao, chave, dicionario):
     return False
 
 def insereChave(dicionario, chave):
+    """
+    Adiciona uma chave ao dicionário com uma lista vazia como valor se não existir.
+
+    Parâmetros
+    ----------
+    dicionario : dict
+        O dicionário a ser modificado.
+    chave : any
+        A chave para a nova lista a ser adicionada.
+
+    Retorna
+    -------
+    dict
+        O dicionário atualizado.
+
+    """
     if chave not in dicionario:
         dicionario[chave] = []
     return dicionario

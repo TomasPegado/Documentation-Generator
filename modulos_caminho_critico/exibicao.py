@@ -1,7 +1,6 @@
 """
 Descrição do Modulo:
-Esse módulo foi feito para criar e formatar os arquivos html da documentação
-usando o dicionario que contem os dados dos módulos
+Exibição do caminho crítico e dos erros
     
 """
 """

@@ -1,12 +1,10 @@
-Nome do Projeto: Gerador de Documentação
+Nome do Projeto: Gerador de caminho critico
 
-Descrição: Nosso projeto tem o propósito de gerar uma documentação automática de um projeto feito em Python.
-Com isso, ele gera páginas html que abrem no navegador contendo a documentação de cada módulo.
+Descrição: O projeto visa gerar automaticamente o caminho critico de um projeto, a partir de seu cronograma.A aplicacao recebe um arquivo em formato csv e exibe no console as tarefas qeu compoe o caminho ctitico do projeto.
 
-Nossa aplicação recebe o caminho da pasta que contém os módulos do projeto a ser documentado e,
-a partir de padrões, captura as informações dos módulos para, em seguida, formata-las numa página html.
+A aplicacao recebe e valida um arquivo csv contendo nome da tarefa, seus sucessores, seus predecessores, suas datas de inicio e fim.
+Com isso, e calculada a diferenca entre as datas, gerando uma coluna de duracao, usada com um algoritmo de calculo de caminho critico.
 
-Após as capturas de informações e as formatações das páginas, a aplicação abre elas no navegador do usuário,
-inicializando um local Host.
+A partir do caminho critico calculado, a aplicacao mostra no console o caminho critico do projeto entregue.
 
-Integrantes: Tomás Lenzi, Gabriel Emile
+Integrantes: Vagner Messias, Rodrigo Chiesa, Gabriel Palma
