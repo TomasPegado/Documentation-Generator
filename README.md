@@ -22,6 +22,12 @@ We developed an application that generates a documentation for your Python Proje
 
 * To use it, you can clone this repository and run the app.py
 
+## Final Considerations
+
+* The application doesn't take the name of the .py file by its name, but by the docstring contained within the file. This is a UX error in development that will be corrected.
+
+* The format of the docstrings must follow the standard in the example files in the modulos folder, otherwise the code that extracts the content using regex will not capture the content of the module description.
+
 
 
 
