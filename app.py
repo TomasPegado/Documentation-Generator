@@ -2,7 +2,7 @@
 from entidades.Gerenciador.gerenciador import *
 from flask import Flask, redirect, url_for
 
-caminho = input("Insira o caminho do arquivo contendo os modulos: ")
+caminho = input("\nInsira o caminho do arquivo contendo os modulos: ")
 
 generator(caminho)
 

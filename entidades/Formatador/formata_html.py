@@ -26,12 +26,12 @@ def formataHTML(dados: dict, caminho: str):
     criaStatic(caminho)
     
     # Imprime as chaves do dicionário 'dados' para verificar se há duplicatas
-    print("Dados.keys() antes de criar o índice:", dados.keys())
+    # print("Dados.keys() antes de criar o índice:", dados.keys())
     
     # Cria um índice dos dados, o qual é utilizado para gerar links nas páginas HTML
     indice = criaIndice(dados)
 
-    print("Dados before HTML formatting:", dados)
+    # print("Dados before HTML formatting:", dados)
     
     # Itera sobre os dados para formatar as páginas HTML corretamente
     for arq in dados.keys():
@@ -62,7 +62,7 @@ def criaStatic(caminho: str):
         os.makedirs(f'{caminho}/static')
         print(f"Diretório '{f'{caminho}/static'}' foi criado com sucesso.")
     else:
-        print("O diretório static já existe.")
+        print("\nO diretório static já existe.")
 
 def criaIndice(dados: dict):
     """
@@ -81,7 +81,7 @@ def criaIndice(dados: dict):
         lista_paginas.append(dicionario)
     
     # Imprime a lista completa de páginas após criar todas as entradas
-    print("Índice criado:", lista_paginas)
+    # print("Índice criado:", lista_paginas)
 
     return lista_paginas
 
@@ -110,14 +110,14 @@ def criaAssetsCSS(caminho: str):
         os.makedirs(pasta_assets)
         print(f"Diretório '{pasta_assets}' foi criado com sucesso.")
     else:
-        print("O diretório já existe.")
+        print("O diretório static/assets já existe.\n")
     
     # Verificar se o arquivo original existe
     if os.path.exists(arquivo_css_original):
 
         # Copiar o arquivo
         shutil.copy(arquivo_css_original, arquivo_css_destino)
-        print(f"Arquivo '{arquivo_css_original}' copiado para '{arquivo_css_destino}'")
+        print(f"Arquivo '{arquivo_css_original}' copiado para '{arquivo_css_destino}'\n")
     else:
         print("Arquivo CSS original não encontrado.")
         
@@ -143,7 +143,7 @@ def formataHomePage(dados: dict, caminho: str, indice: list):
 
     dados["modulos_projeto"] = indice
     
-    print("Home page data:", dados)
+    # print("Home page data:", dados)
 
     # Carregar o template
     with open('entidades/Formatador/paginas/template_home.html', 'r', encoding='utf-8') as file:
@@ -171,7 +171,7 @@ def formataModulePage(dados: dict, caminho: str, indice: list):
     with open('entidades/Formatador/paginas/template_modulo.html', 'r', encoding='utf-8') as file:
         template = Template(file.read())
         
-    print(f"Module page data for {dados['nome']}:", dados)
+    # print(f"Module page data for {dados['nome']}:", dados)
 
     # Esta parte é para garantir que a descrição seja uma string formatada corretamente para HTML
     for funcao, detalhes in dados['funcoes'].items():
