@@ -6,6 +6,8 @@ We developed an application that generates a documentation for your Python Proje
 
 ## Format
 
+* The application uses a pattern captured within docstrings. The files to be documented must have two docstrings at the beginning.
+
 * The first contains the description of the script and the second contains the name to be used.
 
 * Then have a docstring below each function def, containing any description you want to give that function.
